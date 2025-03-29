@@ -11,6 +11,7 @@ The converter uses a binary trie (prefix tree) where:
 - Leaf nodes contain letters of the alphabet
 - Efficient lookup through tree traversal
 
+![Morse Code Tree Structure](./mores_tree.jpg)
 ## Features
 
 - Convert English text to Morse code
