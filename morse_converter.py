@@ -1,4 +1,3 @@
-
 class TrieNode:
     def __init__(self, char=''):
         self.char = char
@@ -70,10 +69,29 @@ class MorseCodeTree:
 if __name__ == "__main__":
     tree = MorseCodeTree()
     
-    # Example usage
-    text = "HELLO WORLD"
-    morse = tree.encode_text(text)
-    print(f"Original text: {text}")
-    print(f"Morse code: {morse}")
-    decoded = tree.decode_morse(morse)
-    print(f"Decoded text: {decoded}")
+    # Read from input file
+    try:
+        with open('input.txt', 'r') as file:
+            text = file.read().strip()
+        
+        # Convert to Morse code
+        morse = tree.encode_text(text)
+        
+        # Write Morse code to file
+        with open('morse_output.txt', 'w') as file:
+            file.write(morse)
+            
+        # Convert back to text and write to file
+        decoded = tree.decode_morse(morse)
+        with open('decoded_output.txt', 'w') as file:
+            file.write(decoded)
+            
+        print("Conversion completed successfully!")
+        print(f"Original text: {text}")
+        print(f"Morse code: {morse}")
+        print(f"Decoded text: {decoded}")
+        
+    except FileNotFoundError:
+        print("Error: input.txt file not found!")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
